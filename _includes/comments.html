@@ -31,8 +31,24 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
         })();
     </script>
+
+  {% elsif site.comment.gitment %}
+    <div id="container"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+          // id: '页面 ID', // 可选。默认为 location.href
+          owner: 'Cenyol',
+          repo: 'https://github.com/Cenyol/cenyol.github.io.git',
+          oauth: {
+            client_id: '4ef7ff0df8602b548ad3',
+            client_secret: '11935b2ee7bc0d46715612f5b0220f62a39b7f85',
+          },
+        })
+        gitment.render('container')
+    </script>
   {% endif %}
-  
   
   
 </section>

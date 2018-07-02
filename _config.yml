@@ -22,7 +22,7 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'https://github.com/Cenyol'}
+    - {title: Another Blog, description: Another Blog, url: 'https://cenyol.com'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -32,7 +32,8 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    disqus: vno-jekyll
+    gitment: vno-jekyll
+    # disqus: vno-jekyll
     # duoshuo: 
     
 # Social
