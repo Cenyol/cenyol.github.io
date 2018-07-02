@@ -33,7 +33,7 @@
     </script>
 
   {% elsif site.comment.gitment %}
-    <div id="gitment-container"></div>
+    <div id="container"></div>
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
     <script>
@@ -46,7 +46,7 @@
             client_secret: '11935b2ee7bc0d46715612f5b0220f62a39b7f85',
           },
         })
-        gitment.render('gitment-container')
+        gitment.render('container')
     </script>
   {% endif %}
   
