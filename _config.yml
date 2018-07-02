@@ -1,5 +1,5 @@
 # Basic
-title: Vno Jekyll
+title: Cenyol Jekyll
 subtitle: A blog-orientation theme for Jekyll
 welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
 description: Vno Jekyll is a port of my Ghost theme vno.
@@ -22,12 +22,12 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    - {title: Projects, description: My Projects, url: 'https://github.com/Cenyol'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
 gems: [jekyll-paginate]
-paginate: 10
+paginate: 15
 paginate_path: "page/:num/"
 
 # Comment
@@ -37,11 +37,10 @@ comment:
     
 # Social
 social:
-    weibo: onevcat
-    github: onevcat
-    twitter: onevcat
-    gplus: 107108267983477358170
-    mail: onev@onevcat.com
+    weibo: chenhanqun
+    github: Cenyol
+    twitter: Cenyol
+    mail: cenyol@163.com
 
 # Google Analytics
 ga:
