@@ -25,6 +25,7 @@ date: 2018-07-23 15:32:24.000000000 +08:00
 - 深入理解Java虚拟机
 - Netty in Action，主要是理解相关IO的知识和应用
 - Java Concurrency in Practice，并发编程
+- Head First 设计模块，Head First系列容易让人一见钟情
 
 以上，可以每年读一遍，毕竟具体的语言技术应用更新换代比较快。
 
