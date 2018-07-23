@@ -20,12 +20,14 @@ date: 2018-07-23 15:32:24.000000000 +08:00
 - 深入理解Java虚拟机
 - Netty in Action，主要是理解相关IO的知识和应用
 - Java Concurrency in Practice，并发编程
+
 以上，可以每年读一遍，毕竟具体的语言技术应用更新换代比较快。
 
 Spring技术栈相关的内容：
 - Spring in Action，Spring入门基础
 - Spring Boot in Action，Spring Boot入门基础
 - Spring Microservices in Action，使用Spring Boot进行微服务开发，分布式开发相关
+
 这一块其实在日常中工作会经常用到，所以倒不是一定要经常反复阅读，遇到问题的时候打开谷歌搜搜就有答案了。
 
 #### 结语
