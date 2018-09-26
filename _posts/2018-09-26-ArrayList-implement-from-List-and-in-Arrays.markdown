@@ -96,5 +96,5 @@ then you create new ArrayList, which is a full, independent copy of the original
 看源码的时候，应该要更加深入，或许就有解了。
 
 ### 参考
-- ![Difference between Arrays.asList(array) and new ArrayList<Integer>(Arrays.asList(array))](https://stackoverflow.com/questions/16748030/difference-between-arrays-aslistarray-and-new-arraylistintegerarrays-aslist)
-- ![维基百科上对Wrapper模式的介绍](https://en.wikipedia.org/wiki/Adapter_pattern)
+- Difference between Arrays.asList(array) and new ArrayList<Integer>(Arrays.asList(array))：https://stackoverflow.com/questions/16748030/difference-between-arrays-aslistarray-and-new-arraylistintegerarrays-aslist
+- 维基百科上对Wrapper模式的介绍：https://en.wikipedia.org/wiki/Adapter_pattern
