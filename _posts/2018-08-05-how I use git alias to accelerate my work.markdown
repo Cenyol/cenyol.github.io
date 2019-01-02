@@ -39,7 +39,7 @@ Git和日志一样，它是我们开发过程中，代码变化的记录过程�
 根据2-8法则，简化最常用的那20%命令，可以节约80%的时间也不一定呢。
 
 ### 参考
-[git的使用和别名配置](https://www.jianshu.com/p/5c4511c7dd88)
-[commit规范](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
-[优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)
+- [git的使用和别名配置](https://www.jianshu.com/p/5c4511c7dd88)
+- [commit规范](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+- [优雅的提交你的 Git Commit Message](https://juejin.im/post/5afc5242f265da0b7f44bee4)
 

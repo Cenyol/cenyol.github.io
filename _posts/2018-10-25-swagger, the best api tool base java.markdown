@@ -43,9 +43,12 @@ date: 2018-10-25 12:12:24.000000000 +08:00
 
 
 ### 参考
-1、[Swagger入门用法](https://www.vojtechruzicka.com/documenting-spring-boot-rest-api-swagger-springfox)
-2、[Swagger UI界面详细使用](https://blog.csdn.net/hry2015/article/details/80614315)
-3、[本项目的简单Demo源码](https://github.com/Cenyol/Swagger2)
+
+- [Swagger入门用法](https://www.vojtechruzicka.com/documenting-spring-boot-rest-api-swagger-springfox)
+
+- [Swagger UI界面详细使用](https://blog.csdn.net/hry2015/article/details/80614315)
+
+- [本项目的简单Demo源码](https://github.com/Cenyol/Swagger2)
 
 
 
