@@ -9,7 +9,7 @@ date: 2018-10-20 10:32:24.000000000 +08:00
 早上在看《实战Java高并发设计》一书时，有个例子提到Integer是个不可变类型，类似String那样。如果对Integer i = 0; 执行i++；会得到另一个新的对象引用，指向Integer(1)，i的值是改，但是，包裹的对象也变了，是个新的，并不是在原来的Integer(0)内部对其中的value进行递增。
 
 所以，如果按照书里的例子：
-![](http://pkh7m4ciq.bkt.clouddn.com/2019-01-02-15464042611598.png)
+![](http://mdpic.cenyol.com/2019-01-02-55AC4BE2-BB80-48FC-A0F8-ABDD131C9C6B.png)
 
 
 会导致第二个红框里面的加锁效果失效了，因为每当i改变的时候，加锁对象都是不一样的，等于没能阻止并行的发生。所以，对于Integer来说，尽量别用它作为锁对象，特别是当其会发生变化的时候。
@@ -26,7 +26,7 @@ date: 2018-10-20 10:32:24.000000000 +08:00
 
 从思想上来说，值，或者说整型、长整型、浮点型，比如i=5 -> i=6，这个过程来说，改变的是i自己而已，5它自己并没有变成6，只是用个与5不同的东西，叫做6来放到i这个变量里面，也就是说，平时的数字啥的，它们自身就都是一个个不可变量，嗯，有点道理。
 所以放到包装类型这边也就说得通了。对此，Stack Overflow上有个回答：
-![](http://pkh7m4ciq.bkt.clouddn.com/2019-01-02-15464042894612.png)
+![](http://mdpic.cenyol.com/2019-01-02-039C4333-DBDB-4D09-B309-67F478F2EDC4.png)
 
 
 That’s not changing the number 5 - it’s changing the value of x .
@@ -34,7 +34,7 @@ That’s not changing the number 5 - it’s changing the value of x .
 ！！前述基础类型不能作为synchronized的参数，只能是reference可能就是因为基础类型变量保存的值是时刻在变化，而reference相对来说较为稳定，只要reference的目标对象不变，无论对象的内容如何改变，它所保存的reference值(即地址值)也都不会改变，比较适合当做锁来使用。
 
 还有个例子可以说明，如果Integer是个可变对象，也就是说，我们可以直接操作其内部value的时候的弊端：
-![](http://pkh7m4ciq.bkt.clouddn.com/2019-01-02-15464043174603.png)
+![](http://mdpic.cenyol.com/2019-01-02-A42BC7DC-DF43-45B8-ADE4-8DCCC0A74449.png)
 
 
 每一次，想把不同的值分别赋予foo1、foo2、foo3，但是！！！Integer是个对象，如果它是个可变量，那么i始终指向一个Integer，无论其内部value怎么变化。所以上述问题就是出现，三个foo都指向同一个Integer。只要对其中一个foo进行操作，总会影响到另外两个的值，这点从Object的角度来理解很简单。
@@ -47,5 +47,7 @@ That’s not changing the number 5 - it’s changing the value of x .
 ### 参考
 - [Why are Java wrapper classes immutable?](https://stackoverflow.com/questions/12370544/why-are-java-wrapper-classes-immutable)
 - [Primitive wrapper class](https://en.wikipedia.org/wiki/Primitive_wrapper_class)
+
+
 
 
