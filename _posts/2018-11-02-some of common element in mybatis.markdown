@@ -39,6 +39,8 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 
 <where> <if>的作用是用于多个可选的情况下，可全要、可部分也可都不要。这个组合比上述switch的组合有个优点就是，它可以自动去除and关键字。比如：
 
+
+
 ```
 <select id="searchIds" resultType="long">
     SELECT id from tb_goods_operation
@@ -59,13 +61,11 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 </select>
 ```
 
-```
-<select id="searchIds" resultType="long">
-    SELECT id from tb_goods_operation
-</select>
-```
 
 虽然第一个if里面有个and，当所有的if都成立时，where标签会自动去除第一个条件前面的and，因为它懂得，而switch组合就不懂了。它往往需要在前面加个没有and的查询条件，比如下：
+
+
+
 
 ```
 <select id="findActiveBlogLike" resultType="Blog">
@@ -84,11 +84,6 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 </select>
 ```
 
-```
-<select id="findActiveBlogLike" resultType="Blog">
-  SELECT * FROM BLOG WHERE state = 'ACTIVE'
-</select>
-```
 
 ### #{}和${}的区别
 引用Stack Overflow上的一个回答
