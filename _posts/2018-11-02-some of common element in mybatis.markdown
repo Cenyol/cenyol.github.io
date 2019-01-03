@@ -17,11 +17,11 @@ jdbc:mysql://${db.host}:${db.port}/${db.database}?useUnicode=true&amp;characterE
 
 ### 传入到dao里面不过是object还是map都可以直接使用其中的字段名或者key来引用
 
-```java
+```
 List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 ```
 
-```xml
+```
 <select id="getByIds" parameterType="list" resultType="GoodsOperationRecordPO">
     SELECT * FROM tb_goods_operation WHERE id in
     <foreach item="item" index="index" collection="opIds" open="(" separator="," close=")">
@@ -39,8 +39,8 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 
 <where> <if>的作用是用于多个可选的情况下，可全要、可部分也可都不要。这个组合比上述switch的组合有个优点就是，它可以自动去除and关键字。比如：
 
-```xml
-&lt;select id="searchIds" resultType="long">
+```
+<select id="searchIds" resultType="long">
     SELECT id from tb_goods_operation
     <where>
         <if test="groupId != null and groupId > 0">
@@ -56,15 +56,20 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
             <![CDATA[ AND createTime < #{endTime} ]]>
         </if>
     </where>
-&lt;/select>
+</select>
+```
+
+```
+<select id="searchIds" resultType="long">
+    SELECT id from tb_goods_operation
+</select>
 ```
 
 虽然第一个if里面有个and，当所有的if都成立时，where标签会自动去除第一个条件前面的and，因为它懂得，而switch组合就不懂了。它往往需要在前面加个没有and的查询条件，比如下：
 
-```xml
-&lt;select id="findActiveBlogLike"
-     resultType="Blog">
-  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
+```
+<select id="findActiveBlogLike" resultType="Blog">
+  SELECT * FROM BLOG WHERE state = 'ACTIVE'
   <choose>
     <when test="title != null">
       AND title like #{title}
@@ -76,7 +81,13 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
       AND featured = 1
     </otherwise>
   </choose>
-&lt;/select>
+</select>
+```
+
+```
+<select id="findActiveBlogLike" resultType="Blog">
+  SELECT * FROM BLOG WHERE state = 'ACTIVE'
+</select>
 ```
 
 ### #{}和${}的区别
