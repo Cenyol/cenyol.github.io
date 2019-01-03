@@ -40,11 +40,7 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 <where> <if>的作用是用于多个可选的情况下，可全要、可部分也可都不要。这个组合比上述switch的组合有个优点就是，它可以自动去除and关键字。比如：
 
 ```
-echo 'hello'
-```
-
-```
-<select id="searchIds" resultType="long">
+&lt;select id="searchIds" resultType="long"&gt;
     SELECT id from tb_goods_operation
     <where>
         <if test="groupId != null and groupId > 0">
@@ -60,7 +56,7 @@ echo 'hello'
             <![CDATA[ AND createTime < #{endTime} ]]>
         </if>
     </where>
-</select>
+&lt;/select>
 ```
 
 
@@ -73,7 +69,7 @@ echo 'hello'
 
 
 ```
-<select id="findActiveBlogLike" resultType="Blog">
+&lt;select id="findActiveBlogLike" resultType="Blog"&gt;
   SELECT * FROM BLOG WHERE state = 'ACTIVE'
   <choose>
     <when test="title != null">
@@ -86,7 +82,7 @@ echo 'hello'
       AND featured = 1
     </otherwise>
   </choose>
-</select>
+&lt;/select>
 ```
 
 
