@@ -39,7 +39,9 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 
 <where> <if>的作用是用于多个可选的情况下，可全要、可部分也可都不要。这个组合比上述switch的组合有个优点就是，它可以自动去除and关键字。比如：
 
-
+```
+echo 'hello'
+```
 
 ```
 <select id="searchIds" resultType="long">
@@ -65,6 +67,9 @@ List<GoodsOperationRecordPO> getByIds(SearchHistoryParams params);
 虽然第一个if里面有个and，当所有的if都成立时，where标签会自动去除第一个条件前面的and，因为它懂得，而switch组合就不懂了。它往往需要在前面加个没有and的查询条件，比如下：
 
 
+```
+echo 'hello'
+```
 
 
 ```
