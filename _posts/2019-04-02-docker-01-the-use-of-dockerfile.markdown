@@ -4,7 +4,7 @@ title: Docker(一) - Dockerfile初步使用
 date: 2019-04-02 11:46:39.000000000 +08:00
 ---
 
-#### Example
+### Example
 
 先来看个常见的Dockerfile内容
 
@@ -43,12 +43,16 @@ EXPOSE 2181
 CMD ["zkServer.sh", "start-foreground"]
 ```
 
-#### 概念：Docker层
+### 概念：Docker层
 
 镜像是由Base层外加上镜像创建时候，各种docker命令产生的层所组成的，一叠层层们的集合，即镜像是个集装箱，里面装着各类层。如下图所示：
 ![](http://mdpic.cenyol.com/2019-04-03-15542944502676.jpg)
 
-每一层都是在创建镜像时，留下的一个痕迹。比如Dockerfile里面的RUN、ADD、COPY等命令每次运行都会产生一层，往上碟。理论上来说，这个层的数量是有限制的。不宜过多，一般来说几个十来个还是可以接受的。
+每一层都是在创建镜像时，留下的一个痕迹。比如Dockerfile里面的RUN、ADD、COPY等命令每次运行都会产生一层，往上碟。理论上来说，这个层的数量是有限制的。不宜过多，一般来说几个十来个还是可以接受的。通过docker history命令查看，如下图所示：
+![](http://mdpic.cenyol.com/2019-04-03-15542967275978.jpg)
+
+可以看到，还有不少0B的层存在，这就是在Dockerfile里面运行RUN、ADD、COPY、ARG、ENV等命令产生的，其中类似前面三个命令往往会产生有数据大小的层，而类似ARG、ENV等设置一些变量的层，是不占空间的。
+
 
 这些层形成一个镜像Im之后(称之为镜像层)，如果基于Im启动一个容器，启动的时候会默认在Im上面叠一个可写层(叫做容器层)，然后在容器上面进行写操作，包括创建新文件、删除文件等。其中，删除操作使用了个幌子。如果被删除的文件来自镜像层中，那么实际只是在容器层做了个标记，告诉顶层应用说这个文件已经被删啦，如果应用要读取直接返回不存在，就算实际它还存在，哈哈。
 如果是修改镜像层中已有的数据，则是先将镜像层中的文件复制到容器层，然后对容器层中的副本进行修改，后面容器中应用对这个文件的操作都是基于容器层中的副本进行，镜像层的原本不会受到干扰。这也是镜像可以被多个容器共享的原理。
@@ -56,13 +60,13 @@ CMD ["zkServer.sh", "start-foreground"]
 所以可以理解为，容器和镜像都是集装箱，一层层的。只不过，镜像这一叠层层是只读，不能被修改，以便进行共享的时候，不会互相影响。而容器这个集装箱可以理解为是套在镜像上面，新增了一层可读写层，以便容器内的程序运行需要。大概图下所示：
 ![](http://mdpic.cenyol.com/2019-04-03-15542952343066.jpg)
 
-#### 镜像精简
+### 镜像精简
 
 记录做事后清理工作，比如rm压缩包，以精简镜像大小。如上Example中，在压缩包解压之后，就可以直接删掉，给镜像省个35M的大小。
 
 其他的还有，清理包管理更新时候留下的缓存等，没用的东西都可以删掉。
 
-#### Dockerfile常用命令
+### Dockerfile常用命令
 
 见：docker help
 
@@ -70,7 +74,7 @@ CMD ["zkServer.sh", "start-foreground"]
 
 **docker logs** 在创建容器的时候，有时候一些错误信息没有直接在命令行进行输出，可以通过这个命令来获取特定容器的日志信息，查看更加详细的记录。
 
-#### 使用Alpine运行Go Server
+### 使用Alpine运行Go Server
 
 在本地电脑上编译好go文件，然后cp到alpine中进行执行：
 编译命令：CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  test.go
@@ -78,13 +82,12 @@ CMD ["zkServer.sh", "start-foreground"]
 
 比如简单写个http server，几M就能在线上跑一个项目，还是不错的，如果使用Busybox那就更小了。
 
-#### 实践建议
+### 实践建议
 
 就自己来说，在个人目录下面建了个docker文件夹，用来放各种Dockerfile，无论是学习还是工作上线的时候都可以。这样就可以达到共享，减少重复工作的目的，这也是Dockerfile的目的。
 
-#### 参考
+### 参考
 - [Docker镜像分层技术](http://www.maiziedu.com/wiki/cloud/dockerimage/)
 - [Dockerfile 最佳实践](https://yeasy.gitbooks.io/docker_practice/appendix/best_practices.html)
 - [理解docker的rootfs和分层构建联合挂载的概念](https://haojianxun.github.io/2018/05/03/%E7%90%86%E8%A7%A3docker%E7%9A%84rootfs%E5%92%8C%E5%88%86%E5%B1%82%E6%9E%84%E5%BB%BA%E8%81%94%E5%90%88%E6%8C%82%E8%BD%BD%E7%9A%84%E6%A6%82%E5%BF%B5/)
-
 
